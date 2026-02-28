@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useExpenses } from '@/context/ExpenseContext';
-import { EXPENSE_CATEGORIES, INCOME_CATEGORIES } from '@/utils/types';
-import { X } from 'lucide-react';
+import { EXPENSE_CATEGORIES, INCOME_CATEGORIES, CATEGORY_ICONS } from '@/utils/types';
+import { X, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
 
 interface Props {
@@ -54,10 +53,10 @@ export default function TransactionModal({ open, onClose, editId }: Props) {
     const data = { type, amount: parseFloat(amount), category, description, date };
     if (editId) {
       updateTransaction(editId, data);
-      toast({ title: 'Updated!', description: 'Transaction updated successfully' });
+      toast({ title: '✅ Updated!', description: 'Transaction updated successfully' });
     } else {
       addTransaction(data);
-      toast({ title: 'Added!', description: `${type === 'income' ? 'Income' : 'Expense'} added successfully` });
+      toast({ title: '🎉 Added!', description: `${type === 'income' ? 'Income' : 'Expense'} added successfully` });
     }
     onClose();
   };
@@ -70,57 +69,112 @@ export default function TransactionModal({ open, onClose, editId }: Props) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute inset-0 bg-foreground/20 backdrop-blur-sm"
+            className="absolute inset-0 bg-foreground/30 backdrop-blur-md"
             onClick={onClose}
           />
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            initial={{ opacity: 0, scale: 0.9, y: 30 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="relative w-full max-w-md glass-card rounded-2xl p-6 z-10"
+            exit={{ opacity: 0, scale: 0.9, y: 30 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+            className="relative w-full max-w-md glass-card rounded-3xl p-6 z-10 border border-white/10"
           >
-            <div className="flex items-center justify-between mb-5">
-              <h2 className="font-display text-xl font-bold">{editId ? 'Edit' : 'Add'} Transaction</h2>
-              <Button variant="ghost" size="icon" onClick={onClose} className="rounded-full">
+            {/* Header */}
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="font-display text-xl font-bold gradient-text">{editId ? 'Edit' : 'New'} Transaction</h2>
+              <Button variant="ghost" size="icon" onClick={onClose} className="rounded-full hover:bg-muted/80">
                 <X className="h-5 w-5" />
               </Button>
             </div>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="flex rounded-lg bg-muted p-1">
+
+            <form onSubmit={handleSubmit} className="space-y-5">
+              {/* Type toggle with animated indicator */}
+              <div className="relative flex rounded-2xl bg-muted p-1">
+                <motion.div
+                  className={`absolute top-1 bottom-1 rounded-xl ${type === 'expense' ? 'bg-rose-500' : 'bg-emerald-500'} shadow-lg`}
+                  layout
+                  style={{ width: 'calc(50% - 4px)' }}
+                  animate={{ x: type === 'expense' ? 0 : '100%' }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                />
                 {(['expense', 'income'] as const).map(t => (
                   <button
                     key={t}
                     type="button"
                     onClick={() => { setType(t); setCategory(''); }}
-                    className={`flex-1 py-2 text-sm font-medium rounded-md transition-all ${type === t ? (t === 'income' ? 'bg-income text-income-foreground' : 'bg-expense text-expense-foreground') : 'text-muted-foreground'}`}
+                    className={`relative z-10 flex-1 py-2.5 text-sm font-semibold rounded-xl transition-colors ${type === t ? 'text-white' : 'text-muted-foreground'}`}
                   >
                     {t === 'income' ? '💰 Income' : '💸 Expense'}
                   </button>
                 ))}
               </div>
+
+              {/* Amount */}
               <div>
-                <Label>Amount</Label>
-                <Input type="number" step="0.01" min="0" placeholder="0.00" value={amount} onChange={e => setAmount(e.target.value)} className="mt-1 font-display text-lg" />
+                <Label className="text-muted-foreground text-xs uppercase tracking-wider font-semibold">Amount</Label>
+                <div className="relative mt-1.5">
+                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground font-display font-bold">$</span>
+                  <Input
+                    type="number"
+                    step="0.01"
+                    min="0"
+                    placeholder="0.00"
+                    value={amount}
+                    onChange={e => setAmount(e.target.value)}
+                    className="pl-8 font-display text-lg font-bold rounded-xl h-12"
+                  />
+                </div>
               </div>
+
+              {/* Category grid */}
               <div>
-                <Label>Category</Label>
-                <Select value={category} onValueChange={setCategory}>
-                  <SelectTrigger className="mt-1"><SelectValue placeholder="Select category" /></SelectTrigger>
-                  <SelectContent>
-                    {categories.map(c => <SelectItem key={c} value={c}>{c}</SelectItem>)}
-                  </SelectContent>
-                </Select>
+                <Label className="text-muted-foreground text-xs uppercase tracking-wider font-semibold">Category</Label>
+                <div className="grid grid-cols-4 gap-2 mt-2">
+                  {categories.map(c => (
+                    <motion.button
+                      key={c}
+                      type="button"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={() => setCategory(c)}
+                      className={`relative flex flex-col items-center gap-1 p-2.5 rounded-xl border-2 transition-all text-center ${category === c
+                          ? 'border-primary bg-primary/10 shadow-md'
+                          : 'border-transparent bg-muted/50 hover:bg-muted'
+                        }`}
+                    >
+                      <span className="text-xl">{CATEGORY_ICONS[c] || '📦'}</span>
+                      <span className="text-[10px] font-medium leading-tight">{c}</span>
+                      {category === c && (
+                        <motion.div
+                          layoutId="category-check"
+                          className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-primary flex items-center justify-center"
+                        >
+                          <Check className="h-2.5 w-2.5 text-white" />
+                        </motion.div>
+                      )}
+                    </motion.button>
+                  ))}
+                </div>
               </div>
+
+              {/* Description */}
               <div>
-                <Label>Description</Label>
-                <Input placeholder="What was it for?" value={description} onChange={e => setDescription(e.target.value)} className="mt-1" />
+                <Label className="text-muted-foreground text-xs uppercase tracking-wider font-semibold">Description</Label>
+                <Input placeholder="What was it for?" value={description} onChange={e => setDescription(e.target.value)} className="mt-1.5 rounded-xl h-11" />
               </div>
+
+              {/* Date */}
               <div>
-                <Label>Date</Label>
-                <Input type="date" value={date} onChange={e => setDate(e.target.value)} className="mt-1" />
+                <Label className="text-muted-foreground text-xs uppercase tracking-wider font-semibold">Date</Label>
+                <Input type="date" value={date} onChange={e => setDate(e.target.value)} className="mt-1.5 rounded-xl h-11" />
               </div>
-              <Button type="submit" className="w-full gradient-primary text-primary-foreground font-semibold">
-                {editId ? 'Update' : 'Add'} Transaction
+
+              {/* Submit */}
+              <Button
+                type="submit"
+                className="w-full h-12 rounded-xl gradient-primary text-primary-foreground font-bold text-base shadow-lg hover:shadow-xl transition-all"
+              >
+                {editId ? '✨ Update' : '✨ Add'} Transaction
               </Button>
             </form>
           </motion.div>
